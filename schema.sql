@@ -5,31 +5,37 @@ DROP TABLE IF EXISTS answers CASCADE;
 DROP TABLE IF EXISTS photos CASCADE;
 
 CREATE TABLE questions (
-  question_id SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   product_id INT,
-  question_body TEXT,
+  question_body VARCHAR(1000),
   question_date DATE,
   asker_name TEXT,
   asker_email TEXT,
   question_helpfulness INT,
-  reported BOOLEAN
+  question_reported BOOLEAN
 );
 
+CREATE INDEX productIndex ON questions(product_id);
+
 CREATE TABLE answers (
-  answer_id SERIAL PRIMARY KEY,
+  a_id SERIAL PRIMARY KEY,
   question_id INT,
-  answer_body TEXT,
+  answer_body VARCHAR(1000),
   answer_date DATE,
   answerer_name TEXT,
   answerer_email TEXT,
   answer_helpfulness INT,
-  reported BOOLEAN,
-  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE
+  answer_reported BOOLEAN,
+  FOREIGN KEY question_id REFERENCES questions(question_id) ON DELETE CASCADE
 );
 
-CREATE TABLE answers (
+CREATE INDEX questionIndex ON answers(question_id);
+
+CREATE TABLE answers_photos (
   photo_id SERIAL PRIMARY KEY,
   answer_id INT,
-  answer_url TEXT,
-  FOREIGN KEY (answer_id) REFERENCES answers(answer_id) ON DELETE CASCADE
+  answer_url VARCHAR(150),
+  CONSTRAINT fk_answer FOREIGN KEY (answer_id) REFERENCES answers(answer_id) ON DELETE CASCADE
 );
+
+CREATE INDEX answerIndex ON answers_photos(answer_id);

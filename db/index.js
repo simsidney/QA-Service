@@ -1,18 +1,15 @@
 const { Pool } = require('pg');
-const { host, user, database, port } = require('../config.js')
+const { host, user, database, password, port } = require('../config.js')
+const pgp = require('pg-promise')()
+const pgpString = `postgresql://postgres:${password}@localhost:5432/qa`
+const db = pgp(pgpString)
 
 const pool = new Pool ({
   host,
   user,
   database,
+  password,
   port
 })
 
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback);
-  },
-  connect: (err, client, done) => {
-    return pool.connect(err, client, done);
-  }
-}
+module.exports = {db, pool}
