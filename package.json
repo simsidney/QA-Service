@@ -4,8 +4,9 @@
   "description": "QA Service for Project Atelier",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
     "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6",
     "pg": "^8.6.0",
     "pg-promise": "^10.10.2"
   },

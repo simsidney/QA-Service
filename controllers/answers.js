@@ -1,14 +1,31 @@
-const models = require('../models');
+// const models = require('../models');
+const mongoModels = require('../mongo-models')
 
 module.exports = {
+  // getAnswers: (req, res) => {
+  //   mongo-models.allQA.getAnswers(req.params, req.query)
+  //     .then((data) => {
+  //       res.status(200).send({
+  //           'question': req.params['question_id'],
+  //           'page': req.query['page'] || 1,
+  //           'count': req.query['count'] || 5,
+  //           'results': data.rows
+  //         })
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //       res.status(500).send('Could not retrieve answers')
+  //     });
+  // },
+
   getAnswers: (req, res) => {
-    models.answers.getAnswers(req.params, req.query)
+    mongoModels.answers.getAnswers(req.params, req.query)
       .then((data) => {
         res.status(200).send({
             'question': req.params['question_id'],
             'page': req.query['page'] || 1,
             'count': req.query['count'] || 5,
-            'results': data.rows
+            'results': data
           })
       })
       .catch((err) => {
@@ -16,6 +33,7 @@ module.exports = {
         res.status(500).send('Could not retrieve answers')
       });
   },
+
   postAnswers: (req, res) => {
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;

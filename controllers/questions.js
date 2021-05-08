@@ -1,14 +1,27 @@
 const models = require('../models');
+const mongoModels = require('../mongo-models')
 
 module.exports = {
+  // getQuestions: (req, res) => {
+  //   models.questions.getQuestions(req.query)
+  //     .then((data) => {
+  //       res.setHeader('Content-Type', 'application/json');
+  //       res.status(200).json({
+  //         'product_id': req.query['product_id'],
+  //         'results': data.rows
+  //       })
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //       res.status(400).send('Failed to retrieve questions')
+  //     });
+  // },
+
   getQuestions: (req, res) => {
-    models.questions.getQuestions(req.query)
+    mongoModels.questions.getQuestions(req.query)
       .then((data) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json({
-          'product_id': req.query['product_id'],
-          'results': data.rows
-        })
+        res.status(200).send(data)
       })
       .catch((err) => {
         console.log(err)
