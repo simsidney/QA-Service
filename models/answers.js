@@ -53,5 +53,21 @@ module.exports = {
           )
       RETURNING a_id`
     );
+  },
+
+  answerHelpfulness: ({ answer_id }) => {
+    return pool.query(
+      `UPDATE answers
+      SET answer_helpfulness = answer_helpfulness+1
+      WHERE a_id = ${answer_id}`
+    );
+  },
+
+  answerReport: ({ answer_id }) => {
+    return pool.query(
+      `UPDATE answers
+      SET answer_reported = TRUE
+      WHERE a_id = ${answer_id}`
+    );
   }
 }

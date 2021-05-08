@@ -32,5 +32,25 @@ module.exports = {
         console.log(err)
         res.status(400).send('Failed to create a question')
       });
+  },
+
+  questionHelpfulness: (req, res) => {
+    models.questions.questionHelpfulness(req.params)
+      .then(() => {
+        res.status(204).send('Question marked as helpful')
+      })
+      .catch(() => {
+        res.status(400).send('Failed to mark question as helpful')
+      });
+  },
+
+  questionReport: (req, res) => {
+    models.questions.questionReport(req.params)
+      .then(() => {
+        res.status(204).send('Question flagged for internal review')
+      })
+      .catch(() => {
+        res.status(400).send('Failed to flag question for internal review')
+      });
   }
 }

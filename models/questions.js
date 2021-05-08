@@ -74,5 +74,21 @@ module.exports = {
           FALSE
         )`
     );
+  },
+
+  questionHelpfulness: ({ question_id }) => {
+    return pool.query(
+      `UPDATE questions
+      SET question_helpfulness = question_helpfulness + 1
+      WHERE question_id = ${question_id}`
+    );
+  },
+
+  questionReport: ({ question_id }) => {
+    return pool.query(
+      `UPDATE questions
+      SET question_reported = TRUE
+      WHERE question_id = ${question_id}`
+    );
   }
 }

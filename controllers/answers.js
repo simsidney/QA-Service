@@ -38,4 +38,25 @@ module.exports = {
         res.status(400).send('Could not post answer')
       });
   },
+
+  answerHelpfulness: (req, res) => {
+    models.answers.answerHelpfulness(req.params)
+      .then(() => {
+        res.status(204).send('Answer marked as helpful')
+      })
+      .catch(() => {
+        res.status(500).send('Failed to mark answer as helpful')
+      });
+  },
+
+  answerReport: (req, res) => {
+    models.answers.answerReport(req.params)
+      .then(() => {
+        res.status(204).send('Answer flagged for internal review')
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(500).send('Failed to flag answer for internal review')
+      });
+  }
 }
