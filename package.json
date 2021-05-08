@@ -1,0 +1,30 @@
+{
+  "name": "qa-service",
+  "version": "1.0.0",
+  "description": "QA Service for Project Atelier",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "pg": "^8.6.0",
+    "pg-promise": "^10.10.2"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7",
+    "fast-csv": "^4.3.6"
+  },
+  "scripts": {
+    "server": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRSJO5-SDThree/QA-Service.git"
+  },
+  "author": "simsidney",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/HRSJO5-SDThree/QA-Service/issues"
+  },
+  "homepage": "https://github.com/HRSJO5-SDThree/QA-Service#readme"
+}
