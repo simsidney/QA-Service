@@ -29,6 +29,24 @@ module.exports = {
       });
   },
 
+  // postQuestion: (req, res) => {
+  //   var dateObj = new Date();
+  //   var month = dateObj.getUTCMonth() + 1;
+  //   var day = dateObj.getUTCDate();
+  //   var year = dateObj.getUTCFullYear();
+  //   newDate = day + "/" + month + "/" + year;
+
+  //   models.questions.postQuestion(req.body, newDate)
+  //     .then((data) => {
+  //       console.log(data)
+  //       res.status(201).send('Successfully created a question')
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //       res.status(400).send('Failed to create a question')
+  //     });
+  // },
+
   postQuestion: (req, res) => {
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
@@ -36,9 +54,9 @@ module.exports = {
     var year = dateObj.getUTCFullYear();
     newDate = day + "/" + month + "/" + year;
 
-    models.questions.postQuestion(req.body, newDate)
+    mongoModels.questions.postQuestion(req.body, newDate)
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         res.status(201).send('Successfully created a question')
       })
       .catch((err) => {

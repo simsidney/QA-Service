@@ -103,3 +103,9 @@ db.questions.aggregate([
       },
   ], { allowDiskUse: true }
 );
+
+db.createCollection( "indices" )
+db.questions.count()
+db.answers.count()
+db.answers_photos.count()
+db.indices.insert({questionIndex: 3521634}, {answerIndex: 12392946}, {photoIndex: 3717892})
