@@ -16,7 +16,6 @@ module.exports = {
       return qaService.collection('finalQA').aggregate(
         { "$match": { "$and": [{"results.question_id": parseInt(question_id)}]}},
         { "$unwind": "$results" },
-        // { "$match": query },
         { "$unwind": "$results.answers"},
         { "$unwind": "$results.answers.results"},
         {"$replaceRoot": { "newRoot": "$results.answers.results" }},
