@@ -51,10 +51,41 @@ module.exports = {
     .catch ((err) => {
       console.log(err)
     });
+  },
+
+  questionHelpfulness: ({ question_id }) => {
+    var query = {"results.question_id": parseInt(question_id)}
+    return qaService.collection("finalQA").update(query,
+      {
+        $inc: { "results.$.question_helpful": 1},
+      })
+
+    .then((result) => {
+      return result.result
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  },
+
+  questionReport: ({ question_id }) => {
+    var query = {"results.question_id": parseInt(question_id)}
+    return qaService.collection("finalQA").update(query,
+      {
+        $set: { "results.$.question_reported": 1}
+      })
+
+    .then((result) => {
+      return result.result
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
+
 }
-
-
 
 // module.exports = {
 //   getQuestions: ({product_id, page = 1, count = 5}) => {

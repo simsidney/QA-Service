@@ -65,9 +65,19 @@ module.exports = {
       });
   },
 
+  // questionHelpfulness: (req, res) => {
+  //   models.questions.questionHelpfulness(req.params)
+  //     .then(() => {
+  //       res.status(204).send('Question marked as helpful')
+  //     })
+  //     .catch(() => {
+  //       res.status(400).send('Failed to mark question as helpful')
+  //     });
+  // },
+
   questionHelpfulness: (req, res) => {
-    models.questions.questionHelpfulness(req.params)
-      .then(() => {
+    mongoModels.questions.questionHelpfulness(req.params)
+      .then((data) => {
         res.status(204).send('Question marked as helpful')
       })
       .catch(() => {
@@ -75,8 +85,18 @@ module.exports = {
       });
   },
 
+  // questionReport: (req, res) => {
+  //   models.questions.questionReport(req.params)
+  //     .then(() => {
+  //       res.status(204).send('Question flagged for internal review')
+  //     })
+  //     .catch(() => {
+  //       res.status(400).send('Failed to flag question for internal review')
+  //     });
+  // }
+
   questionReport: (req, res) => {
-    models.questions.questionReport(req.params)
+    mongoModels.questions.questionReport(req.params)
       .then(() => {
         res.status(204).send('Question flagged for internal review')
       })
