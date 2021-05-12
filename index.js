@@ -3,9 +3,7 @@ const app = express()
 const newrelic = require('newrelic')
 const bodyParser = require('body-parser');
 const router = require('./routes/index.js')
-const db = require('./db')
 const port = 33212;
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

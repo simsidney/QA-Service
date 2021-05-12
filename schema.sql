@@ -26,7 +26,7 @@ CREATE TABLE answers (
   answerer_email TEXT,
   answer_helpfulness INT,
   answer_reported BOOLEAN,
-  FOREIGN KEY question_id REFERENCES questions(question_id) ON DELETE CASCADE
+  CONSTRAINT fk_question FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
 );
 
 CREATE INDEX questionIndex ON answers(question_id);
@@ -35,7 +35,7 @@ CREATE TABLE answers_photos (
   photo_id SERIAL PRIMARY KEY,
   answer_id INT,
   answer_url VARCHAR(150),
-  CONSTRAINT fk_answer FOREIGN KEY (answer_id) REFERENCES answers(answer_id) ON DELETE CASCADE
+  CONSTRAINT fk_answer FOREIGN KEY (answer_id) REFERENCES answers(a_id) ON DELETE CASCADE
 );
 
 CREATE INDEX answerIndex ON answers_photos(answer_id);
