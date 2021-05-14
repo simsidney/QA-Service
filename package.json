@@ -4,9 +4,10 @@
   "description": "QA Service for Project Atelier",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fastify": "^3.15.1",
+    "fastify-cors": "^6.0.1",
     "newrelic": "^7.3.1",
     "pg": "^8.6.0"
   },
