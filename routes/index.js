@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router()
 const controller = require('../controllers');
-const db = require('../db')
 
 router.get('/question', controller.questions.getQuestions);
 router.get('/question/:question_id/answers', controller.answers.getAnswers);

@@ -34,7 +34,7 @@ module.exports = {
           )
           FILTER
             (WHERE answer_reported = FALSE),
-          json_build_array()
+          json_build_object()
         )
 
         AS answers

@@ -4,7 +4,6 @@ module.exports = {
   getQuestions: (req, res) => {
     models.questions.getQuestions(req.query)
       .then((data) => {
-        res.setHeader('Content-Type', 'application/json');
         res.status(200).json({
           'product_id': req.query['product_id'],
           'results': data.rows
@@ -25,11 +24,9 @@ module.exports = {
 
     models.questions.postQuestion(req.body, newDate)
       .then((data) => {
-        console.log(data)
         res.status(201).send('Successfully created a question')
       })
       .catch((err) => {
-        console.log(err)
         res.status(400).send('Failed to create a question')
       });
   },
