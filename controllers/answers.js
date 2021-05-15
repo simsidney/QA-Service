@@ -27,10 +27,10 @@ module.exports = {
   },
 
   answerHelpfulness: async (req, res) => {
-    return models.answers.answerHelpfulness(req.params)
+    return await models.answers.answerHelpfulness(req.params)
   },
 
   answerReport: async (req, res) => {
-    return models.answers.answerReport(req.params)
+    return await models.answers.answerReport(req.params)
   }
 }
