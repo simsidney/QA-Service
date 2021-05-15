@@ -14,14 +14,14 @@ module.exports = {
     var year = dateObj.getUTCFullYear();
     newDate = day + "/" + month + "/" + year;
 
-    return models.questions.postQuestion(req.body, newDate)
+    return await models.questions.postQuestion(req.body, newDate)
   },
 
   questionHelpfulness: async (req, res) => {
-    return models.questions.questionHelpfulness(req.params)
+    return await models.questions.questionHelpfulness(req.params)
   },
 
   questionReport: async (req, res) => {
-    return models.questions.questionReport(req.params)
+    return await models.questions.questionReport(req.params)
   }
 }

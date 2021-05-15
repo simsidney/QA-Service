@@ -1,8 +1,8 @@
 const { pool } = require('../db');
 
 module.exports = {
-  getQuestions: ({product_id, page = 1, count = 5}) => {
-    return pool.query(
+  getQuestions: async ({product_id, page = 1, count = 5}) => {
+    return await pool.query(
       `SELECT
         questions.question_id,
         question_body,
@@ -51,8 +51,8 @@ module.exports = {
       `);
   },
 
-  postQuestion: ({ body, name, email, product_id }, date) => {
-    return pool.query(
+  postQuestion: async ({ body, name, email, product_id }, date) => {
+    return await pool.query(
       `INSERT INTO questions
         (
           product_id,
@@ -76,16 +76,16 @@ module.exports = {
     );
   },
 
-  questionHelpfulness: ({ question_id }) => {
-    return pool.query(
+  questionHelpfulness: async ({ question_id }) => {
+    return await pool.query(
       `UPDATE questions
       SET question_helpfulness = question_helpfulness + 1
       WHERE question_id = ${question_id}`
     );
   },
 
-  questionReport: ({ question_id }) => {
-    return pool.query(
+  questionReport: async ({ question_id }) => {
+    return await pool.query(
       `UPDATE questions
       SET question_reported = TRUE
       WHERE question_id = ${question_id}`

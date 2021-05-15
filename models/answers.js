@@ -1,9 +1,9 @@
 const { pool } = require('../db');
 
 module.exports = {
-  getAnswers: ({ question_id }, { page = 1, count = 5 }) => {
+  getAnswers: async ({ question_id }, { page = 1, count = 5 }) => {
 
-    return pool.query(
+    return await pool.query(
       `SELECT
         a_id,
         answer_body,
@@ -28,8 +28,8 @@ module.exports = {
     `);
   },
 
-  postAnswers: ({ question_id }, { body, name, email }, date) => {
-    return pool.query(
+  postAnswers: async ({ question_id }, { body, name, email }, date) => {
+    return await pool.query(
       `INSERT
         INTO answers
           (
@@ -55,16 +55,16 @@ module.exports = {
     );
   },
 
-  answerHelpfulness: ({ answer_id }) => {
-    return pool.query(
+  answerHelpfulness: async ({ answer_id }) => {
+    return await pool.query(
       `UPDATE answers
       SET answer_helpfulness = answer_helpfulness+1
       WHERE a_id = ${answer_id}`
     );
   },
 
-  answerReport: ({ answer_id }) => {
-    return pool.query(
+  answerReport: async ({ answer_id }) => {
+    return await pool.query(
       `UPDATE answers
       SET answer_reported = TRUE
       WHERE a_id = ${answer_id}`
