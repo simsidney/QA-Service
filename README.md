@@ -1,4 +1,4 @@
-# Atelier - An updated back-end service for Catwalk, a Front-end Retail Web Application
+# An updated back-end service for Bougie Boutique, a Front-end Retail Web Application
 Questions and Answers Service API
 
 Created an extraction, transformation, and loading (ETL) process and migrated 3GB of data stored in CSV format into a PostgreSQL database. The data was stored in three tables each with their own schema (questions, answers, and photos). Optimized joins by assigning foreign keys and indexing them, resulting in query times of less than 1ms.
